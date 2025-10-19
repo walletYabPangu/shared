@@ -2,10 +2,10 @@ package shared
 
 import (
 	"fmt"
+	"github.com/walletYabPangu/shared/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
-	"shared/models"
 )
 
 type Database struct {
