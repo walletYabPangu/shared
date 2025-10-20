@@ -28,11 +28,6 @@ func InitDb(Data *DbConfig) IDatabase {
 	}
 }
 
-func (d *Database) ConnectAndMigrate() error {
-	er := d.Db.AutoMigrate(models.ServiceRoute{})
-	return er
-}
-
 func (d *Database) GetRoutes() (*models.ServiceRoute, error) {
 
 	r := models.ServiceRoute{}
