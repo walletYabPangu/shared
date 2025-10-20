@@ -1,6 +1,7 @@
 package shared
 
 import (
+	"fmt"
 	"github.com/walletYabPangu/shared/models"
 	"gorm.io/gorm"
 )
@@ -13,7 +14,7 @@ var initializers = []func() error{
 func routeCreate() error {
 	err := db.AutoMigrate(models.ServiceRoute{})
 
-	if err != nil {
+	if err == nil {
 		var mR = []models.ServiceRoute{
 			{
 				ServiceKey:  "auth",
@@ -41,7 +42,9 @@ func routeCreate() error {
 			},
 		}
 
-		db.Save(mR)
+		eer := db.Save(mR).Error
+
+		fmt.Println(eer)
 	}
 
 	return err
