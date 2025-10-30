@@ -21,6 +21,7 @@ type DbConfig struct {
 	MaxIdleConns    int    `env:"POSTGRES_MAX_IDLE_CONNS" envDefault:"10"`
 	MaxOpenConns    int    `env:"POSTGRES_MAX_OPEN_CONNS" envDefault:"100"`
 	ConnMaxLifetime int64  `env:"POSTGRES_CONN_MAX_LIFETIME" envDefault:"3600"`
+	LogLevel        string `env:"POSTGRES_LOG" envDefault:"info"`
 }
 
 type RedisConfig struct {

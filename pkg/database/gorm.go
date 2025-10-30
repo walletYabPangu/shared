@@ -21,19 +21,19 @@ func NewGORM(cfg config.DbConfig) (*gorm.DB, error) {
 
 	// Configure logger
 	var logLevel logger.LogLevel
-	//switch cfg.LogLevel {
-	//case "silent":
-	//	logLevel = logger.Silent
-	//case "error":
-	//	logLevel = logger.Error
-	//case "warn":
-	//	logLevel = logger.Warn
-	//case "info":
-	//	logLevel = logger.Info
-	//default:
-	//	logLevel = logger.Info
-	//}
-	logLevel = logger.Info
+	switch cfg.LogLevel {
+	case "silent":
+		logLevel = logger.Silent
+	case "error":
+		logLevel = logger.Error
+	case "warn":
+		logLevel = logger.Warn
+	case "info":
+		logLevel = logger.Info
+	default:
+		logLevel = logger.Info
+	}
+	//logLevel = logger.Info
 
 	gormLogger := logger.New(
 		log.New(os.Stdout, "\r\n", log.LstdFlags),
