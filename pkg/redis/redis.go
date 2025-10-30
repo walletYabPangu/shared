@@ -5,25 +5,16 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/walletYabPangu/gateway/pkg/redis"
-	"time"
-
 	"github.com/redis/go-redis/v9"
+	"github.com/walletYabPangu/shared/config"
+	"time"
 )
-
-type Config struct {
-	Addr         string
-	Password     string
-	DB           int
-	PoolSize     int
-	MinIdleConns int
-}
 
 type Client struct {
 	*redis.Client
 }
 
-func New(cfg Config) (*Client, error) {
+func New(cfg config.RedisConfig) (*Client, error) {
 	client := redis.NewClient(&redis.Options{
 		Addr:         cfg.Addr,
 		Password:     cfg.Password,

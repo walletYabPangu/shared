@@ -5,7 +5,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/walletYabPangu/gateway/pkg/cache"
+	"github.com/walletYabPangu/shared/pkg/cache"
 
 	"gorm.io/gorm"
 )

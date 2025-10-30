@@ -3,7 +3,7 @@ package database
 
 import (
 	"fmt"
-	"github.com/walletYabPangu/gateway/internal/config"
+	"github.com/walletYabPangu/shared/config"
 	"log"
 	"os"
 	"time"

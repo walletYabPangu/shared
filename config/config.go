@@ -1,4 +1,4 @@
-package shared
+package config
 
 import (
 	"log"
@@ -10,7 +10,6 @@ import (
 type Config struct {
 	Database DbConfig
 	Redis    RedisConfig
-	Bot      BotConfig
 }
 
 type DbConfig struct {
@@ -25,8 +24,12 @@ type DbConfig struct {
 }
 
 type RedisConfig struct {
-	Host string `env:"REDIS_HOST"`
-	Port string `env:"REDIS_PORT"`
+	Host         string `env:"REDIS_HOST"`
+	Port         string `env:"REDIS_PORT"`
+	Password     string `env:"REDIS_PASSWORD"`
+	DB           int    `env:"REDIS_DB"`
+	PoolSize     int    `env:"REDIS_POOL_SIZE"`
+	MinIdleConns int    `env:"REDIS_MAX_IDLE_CONNS"`
 }
 
 type BotConfig struct {
@@ -53,9 +56,6 @@ func LoadConfig() *Config {
 	}
 	if err := env.Parse(&cfg.Redis); err != nil {
 		log.Fatalf("Failed to parse Redis config: %v", err)
-	}
-	if err := env.Parse(&cfg.Bot); err != nil {
-		log.Fatalf("Failed to parse Bot config: %v", err)
 	}
 
 	conf = cfg
